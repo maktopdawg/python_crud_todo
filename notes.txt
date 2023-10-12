@@ -1,0 +1,101 @@
+Object-Oriented Programming - Python
+=================================================================
+
+-> OOP is organising your code via objects
+-> An object is a container for variables and functions
+-> E.g A car object might contain VARIABLES (attributes) for; car name, model, year, etc..., and FUNCTIONS (methods) to move the car, stop the car, pour fuel, lock car etc...
+-> Possible to have multiple objects and objects can interact with each other
+-> Can have an object without methods
+
+CLASSES
+-> A blueprint for an object
+-> First need to create a class when creating a object
+-> Class also accepts arguments
+-> One class can inherit from other class
+-> E.g. We can have a game where a man shoots zombies. So we'll create a class called Human which has everything human, and since zombies are human like but with other features, we can create the Zombie class and inherit all human features from the Human class and also add the zombie features afterwards instead of creating the human features once again for the Zombie
+-> Class names should be CamelCase
+'''
+    class Monster:
+
+        # attributes
+        health = 90
+        energy = 40
+
+        # methods
+        # the self parameter references to the class
+        def attack(self, amount):
+            print(f'Attacking... Damage - {amount}%')
+            print(self.energy * amount / 100)
+            print(self.energy)
+
+        def move(self,speed):
+            print(f'Moving at {speed} kmph')
+
+    monster = Monster()
+    print(monster.energy)
+    monster.attack(50)
+    monster.move(180)
+'''
+
+__Dunder__ methods
+-> double underscore methods
+-> methods called by python when something happens
+-> __init__ is called when an object is created, __len__ is called when the object is created, etc..
+'''
+    from typing import Any
+
+    class Monster:
+
+        # attributes
+        # Once we have the __init__ method, we don't need these variables
+        # health = 90
+        # energy = 40
+
+        def __init__(self, health, energy) -> None:
+            # This print statement will always be called when the Monster() object is created/called, e.g monster1 = Monster()
+            print("Monster was created")
+            self.health = health
+            self.energy = energy
+
+        def __len__(self):
+            return self.health
+        
+        def __abs__(self):
+            return self.energy
+        
+        def __call__(self):
+            print('The monster was called')
+
+        def __add__(self, other):
+            return self.health + other\
+            
+        # Returns the string representation of the object
+        # Must return a string
+        def __str__(self):
+            return f'Monster health {self.health} and monster energy  {self.energy}'
+
+        # methods
+        # the self parameter references to the class
+        def attack(self, amount):
+            print(f'Attacking... Damage - {amount}%')
+            print(self.energy * amount / 100)
+            print(self.energy)
+
+        def move(self,speed):
+            print(f'Moving at {speed} kmph')
+
+    monster1 = Monster(10,20)
+    print(len(monster1))
+    print(abs(monster1))
+    print(dir(monster1))
+    print(monster1.__dict__)
+    print(vars(monster1))
+    monster1()
+    print(monster1+10)
+    print(monster1.__str__())
+'''
+
+PYTHON & CLASSES
+-> strings, integers, functions are objects
+-> function and method both execute block of code, difference is that method belongs to an object
+-> 
